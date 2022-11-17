@@ -13,13 +13,13 @@ const MyProfile =()=>{
     const navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/user/`,{withCredentials: true})
+        axios.get(`https://social-media-clone-project.herokuapp.com/api/user/`,{withCredentials: true})
             .then((result)=>{
                 console.log(result.data)
                 setUser(result.data)
                 setFollowing(result.data.following.length)
                 setFollowers(result.data.followers.length)
-                axios.get(`http://localhost:8000/api/postsByUser/${result.data.userName}`,{withCredentials: true})
+                axios.get(`https://social-media-clone-project.herokuapp.com/api/postsByUser/${result.data.userName}`,{withCredentials: true})
                     .then((result)=>{
                         console.log(result.data)
                         setPosts(result.data);
@@ -35,7 +35,7 @@ const MyProfile =()=>{
     },[])
 
     const deletePost=(id)=>{
-        axios.delete(`http://localhost:8000/api/delete/${id}`, {withCredentials: true})
+        axios.delete(`https://social-media-clone-project.herokuapp.com/api/delete/${id}`, {withCredentials: true})
             .then((result)=>{
                 setPosts(posts.filter(post=> post._id !== id));
             })

@@ -11,11 +11,11 @@ const Home=()=>{
     const navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get("http://localhost:8000/api/user", {withCredentials: true})
+        axios.get("https://social-media-clone-project.herokuapp.com/api/user", {withCredentials: true})
         .then((user)=>{
             console.log(user.data)
             setLoggedUser(user.data)
-            axios.get("http://localhost:8000/api/allPosts", {withCredentials: true})
+            axios.get("https://social-media-clone-project.herokuapp.com/api/allPosts", {withCredentials: true})
                 .then((result)=>{
                     console.log(result.data)
                     setPosts(result.data)

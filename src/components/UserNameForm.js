@@ -11,7 +11,7 @@ const UserNameForm=()=>{
     const navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get("http://localhost:8000/api/user", {withCredentials: true})
+        axios.get("https://social-media-clone-project.herokuapp.com/api/user", {withCredentials: true})
             .then((result)=>{
                 console.log(result.data)
                 setName(result.data.userName)
@@ -25,7 +25,7 @@ const UserNameForm=()=>{
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        axios.put(`http://localhost:8000/api/update/${name}`, {newuserName: newName}, {withCredentials: true})
+        axios.put(`https://social-media-clone-project.herokuapp.com/api/update/${name}`, {newuserName: newName}, {withCredentials: true})
         .then(result=>{
             console.log(result)
             navigate('/myProfile')

@@ -12,7 +12,7 @@ const LikedPosts =()=>{
     async function findPosts(postArray){
         let results = []
         for (const item of postArray){
-            const response = await axios.get(`http://localhost:8000/api/post/${item}`, {withCredentials: true});
+            const response = await axios.get(`https://social-media-clone-project.herokuapp.com/api/post/${item}`, {withCredentials: true});
             if(response.data !== null){
                 results.push(response.data)
             }
@@ -21,7 +21,7 @@ const LikedPosts =()=>{
     }
 
     useEffect(()=>{
-        axios.get("http://localhost:8000/api/user/", {withCredentials: true})
+        axios.get("https://social-media-clone-project.herokuapp.com/api/user/", {withCredentials: true})
             .then((result)=>{
                 setLoggedUser(result.data);
                 findPosts(result.data.likedPosts);

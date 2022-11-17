@@ -12,7 +12,7 @@ const PostForm=()=>{
     const [error ,setError] = useState();
 
     useEffect(()=>{
-        axios.get("http://localhost:8000/api/user/", {withCredentials: true})
+        axios.get("https://social-media-clone-project.herokuapp.com/api/user/", {withCredentials: true})
             .then((result)=>{
                 setLoggedUser(result.data);
             })
@@ -24,7 +24,7 @@ const PostForm=()=>{
 
     const submithandler= (e)=>{
         e.preventDefault();
-        axios.post("http://localhost:8000/api/post", {content}, {withCredentials: true})
+        axios.post("https://social-media-clone-project.herokuapp.com/api/post", {content}, {withCredentials: true})
             .then((result)=>{
                 console.log(result)
                 navigate('/home');

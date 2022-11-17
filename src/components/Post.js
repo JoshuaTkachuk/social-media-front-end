@@ -22,13 +22,13 @@ const Post=()=>{
     const navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/post/${postId}`, {withCredentials: true})
+        axios.get(`https://social-media-clone-project.herokuapp.com/api/post/${postId}`, {withCredentials: true})
             .then((result)=>{
                 setPost(result.data)
                 setPostUser(result.data.createdBy)
                 console.log(result.data)
                 setLikeNum(result.data.numLikes)
-                axios.get(`http://localhost:8000/api/commentsByPost/${postId}`, {withCredentials: true})
+                axios.get(`https://social-media-clone-project.herokuapp.com/api/commentsByPost/${postId}`, {withCredentials: true})
                     .then((result)=>{
                         console.log(result.data)
                         setComments(result.data)
@@ -42,7 +42,7 @@ const Post=()=>{
             })
     },[])
     useEffect(()=>{
-        axios.get("http://localhost:8000/api/user", {withCredentials: true})
+        axios.get("https://social-media-clone-project.herokuapp.com/api/user", {withCredentials: true})
             .then((result)=>{
                 setLoggedUser(result.data)
                 if(result.data.likedPosts.includes(`${postId}`)){
@@ -60,7 +60,7 @@ const Post=()=>{
 
     const submithandler=(e)=>{
         e.preventDefault();
-        axios.post(`http://localhost:8000/api/comment`, {content: newComment, postId: postId}, {withCredentials: true})
+        axios.post(`https://social-media-clone-project.herokuapp.com/api/comment`, {content: newComment, postId: postId}, {withCredentials: true})
             .then((result)=>{
                 setComments([...comments, result.data])
                 setNewComment("")
@@ -73,9 +73,9 @@ const Post=()=>{
     }
     const likePost=(e)=>{
         e.preventDefault();
-        axios.put(`http://localhost:8000/api/likePost`,{id: postId} ,{withCredentials:true})
+        axios.put(`https://social-media-clone-project.herokuapp.com/api/likePost`,{id: postId} ,{withCredentials:true})
         .then((result)=>{
-            axios.put("http://localhost:8000/api/updateLikeNum", {id: postId , numLikes: likeNum + 1},{withCredentials:true})
+            axios.put("https://social-media-clone-project.herokuapp.com/api/updateLikeNum", {id: postId , numLikes: likeNum + 1},{withCredentials:true})
                 .then((result2)=>{
                     console.log(result2)
                     setLikeNum(likeNum + 1)
@@ -92,9 +92,9 @@ const Post=()=>{
     }
     const unlikePost=(e)=>{
         e.preventDefault();
-        axios.put(`http://localhost:8000/api/unlikePost`,{id: postId}, {withCredentials:true})
+        axios.put(`https://social-media-clone-project.herokuapp.com/api/unlikePost`,{id: postId}, {withCredentials:true})
         .then((result)=>{
-            axios.put("http://localhost:8000/api/updateUnlikeNum", {id: postId, numLikes: likeNum - 1}, {withCredentials:true})
+            axios.put("https://social-media-clone-project.herokuapp.com/api/updateUnlikeNum", {id: postId, numLikes: likeNum - 1}, {withCredentials:true})
                 .then((result2)=>{
                     console.log(result2)
                     setLikeNum(likeNum - 1)

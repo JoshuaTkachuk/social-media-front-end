@@ -14,7 +14,7 @@ const Navbar=(props)=>{
     const location = props.location;
 
     useEffect(()=>{
-        axios.get("http://localhost:8000/api/user", {withCredentials: true})
+        axios.get("https://social-media-clone-project.herokuapp.com/api/user", {withCredentials: true})
             .then((result)=>{
                 console.log(result.data)
                 setLoggedUser(result.data)
@@ -26,7 +26,7 @@ const Navbar=(props)=>{
     },[])
 
     const logout=()=>{
-        axios.post("http://localhost:8000/api/logout",{}, {withCredentials: true})
+        axios.post("https://social-media-clone-project.herokuapp.com/api/logout",{}, {withCredentials: true})
         .then(result=>{
             console.log(result)
             navigate("/")

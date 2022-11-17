@@ -11,7 +11,7 @@ const Login=()=>{
 
     const handleSubmit=(e)=>{
         e.preventDefault()
-        axios.post("http://localhost:8000/api/login",{email: email, password: password},{withCredentials: true})
+        axios.post("https://social-media-clone-project.herokuapp.com/api/login",{email: email, password: password},{withCredentials: true})
             .then((result)=>{
                 console.log(result.data)
                 navigate(`/home`);

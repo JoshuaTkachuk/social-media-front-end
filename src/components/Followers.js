@@ -14,7 +14,7 @@ const Followers=()=>{
     const navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get("http://localhost:8000/api/user", {withCredentials: true})
+        axios.get("https://social-media-clone-project.herokuapp.com/api/user", {withCredentials: true})
             .then((result)=>{
                 setLoggedUser(result.data);
             })
@@ -29,7 +29,7 @@ const Followers=()=>{
     },[])
 
     function getFollowersAndFollowing(){
-        axios.get(`http://localhost:8000/api/findUserUserName/${userName}`,{withCredentials: true})
+        axios.get(`https://social-media-clone-project.herokuapp.com/api/findUserUserName/${userName}`,{withCredentials: true})
             .then((result)=>{
                 
                 getFollowing(result.data.following);
@@ -43,7 +43,7 @@ const Followers=()=>{
     async function getFollowers(userNames){
         var followerArray = [];
         for(const user of userNames){
-            const result = await axios.get(`http://localhost:8000/api/findUserUserName/${user}`,{withCredentials: true})
+            const result = await axios.get(`https://social-media-clone-project.herokuapp.com/api/findUserUserName/${user}`,{withCredentials: true})
             followerArray.push(result.data)
         }
         setFollowers(followerArray)
@@ -52,7 +52,7 @@ const Followers=()=>{
     async function getFollowing(userNames){
         var followingArray = [];
         for(const user of userNames){
-            const result = await axios.get(`http://localhost:8000/api/findUserUserName/${user}`,{withCredentials: true})
+            const result = await axios.get(`https://social-media-clone-project.herokuapp.com/api/findUserUserName/${user}`,{withCredentials: true})
             followingArray.push(result.data)
         }
         setFollowing(followingArray)

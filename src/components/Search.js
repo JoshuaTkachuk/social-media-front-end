@@ -12,7 +12,7 @@ const Search =()=>{
     const navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get("http://localhost:8000/api/user", {withCredentials: true})
+        axios.get("https://social-media-clone-project.herokuapp.com/api/user", {withCredentials: true})
             .then((result)=>{
                 setLoggedUser(result.data)
                 console.log(result);
@@ -24,7 +24,7 @@ const Search =()=>{
     },[])
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/searchByUsername/${search}`, {withCredentials: true})
+        axios.get(`https://social-media-clone-project.herokuapp.com/api/searchByUsername/${search}`, {withCredentials: true})
             .then((result)=>{
                 console.log(result.data)
                 setUsers(result.data)

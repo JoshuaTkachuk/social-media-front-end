@@ -17,13 +17,13 @@ const UserProfile=()=>{
     const navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/findUserUserName/${userName}`,{withCredentials: true})
+        axios.get(`https://social-media-clone-project.herokuapp.com/api/findUserUserName/${userName}`,{withCredentials: true})
             .then((result)=>{
                 setUser(result.data);
                 console.log(result.data);
                 setFollowingNum(result.data.following.length);
                 setFollowersNum(result.data.followers.length);
-                axios.get(`http://localhost:8000/api/postsByUser/${userName}`,{withCredentials: true})
+                axios.get(`https://social-media-clone-project.herokuapp.com/api/postsByUser/${userName}`,{withCredentials: true})
                     .then((posts)=>{
                         console.log(posts.data)
                         setPosts(posts.data);
@@ -38,7 +38,7 @@ const UserProfile=()=>{
     },[])
     
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/user/`,{withCredentials: true})
+        axios.get(`https://social-media-clone-project.herokuapp.com/api/user/`,{withCredentials: true})
         .then(result=>{
             console.log(result.data)
             setLoggedUser(result.data)
@@ -58,7 +58,7 @@ const UserProfile=()=>{
 
     const followUser =(e)=>{
         e.preventDefault()
-        axios.put(`http://localhost:8000/api/follow/${userName}`,{}, {withCredentials: true})
+        axios.put(`https://social-media-clone-project.herokuapp.com/api/follow/${userName}`,{}, {withCredentials: true})
             .then(result=>{
                 console.log(result)
                 setFollowStatus(true)
@@ -72,7 +72,7 @@ const UserProfile=()=>{
     
     const unfollowUser =(e)=>{
         e.preventDefault()
-        axios.put(`http://localhost:8000/api/unfollow/${userName}`,{}, {withCredentials: true})
+        axios.put(`https://social-media-clone-project.herokuapp.com/api/unfollow/${userName}`,{}, {withCredentials: true})
             .then((result)=>{
                 console.log(result)
                 setFollowStatus(false)
