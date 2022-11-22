@@ -16,7 +16,7 @@ const Register=()=>{
     const handleSubmit=(e)=>{
         e.preventDefault();
 
-        axios.post("https://social-media-clone-project.herokuapp.com/api/register",{email,password,confirmPassword,userName,firstName,lastName},{withCredentials: true})
+        axios.post("https://social-media-clone-project.herokuapp.com/api/register",{email,password,confirmPassword,userName,firstName,lastName})
             .then((result)=>{
                 console.log(result)
                 navigate(`/home`)
